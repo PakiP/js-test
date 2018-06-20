@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="test-promise-log"></div>
+<script>
+    var logging = document.getElementById('test-promise-log');
+    while (logging.children.length > 1) {
+        logging.removeChild(logging.children[logging.children.length - 1 ]);
+    }
+
+    function log(s) {
+        var p = document.createElement('p');
+        p.innerHTML = s;
+        logging.appendChild(p);
+    }
+
+    new Promise(function (resolve, reject) {
+        log('START');
+        var timeout = Math.random() * 2;
+        log('set timeout to: ' + timeout + 's.');
+        setTimeout(function () {
+            if (timeout < 1) {
+                log('resolve()...');
+                resolve('200 ok');
+            } else {
+                log('reject()...');
+                reject('timeout in ' + timeout + 's.');
+            }
+        }, timeout * 1000);
+    }).then(function (r) {
+        log('done: ' + r);
+    }).catch(function (r) {
+        log('failed: ' + r);
+    });
+</script>
+</body>
+</html>

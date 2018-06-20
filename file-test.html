@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #test-image-preview {
+        width: 400px;
+        height: 400px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+
+    }
+</style>
+<body>
+    <form id="test-file-upload" enctype="multipart/form-data"
+        method="post" >
+        <input type="file" id="test-image-file">
+    </form>
+    <div id="test-file-info"></div>
+    <div id="test-image-preview"></div>
+</body>
+<script type="text/javascript" src="js/file-test.js"></script>
+</html>

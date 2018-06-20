@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function count(start, end) {
+        //立即输出第一个值
+        console.log(start++);
+        var timer = setInterval(function(){
+            if(start <= end){
+                console.log(start++);
+            }
+        },100);
+        //返回一个对象
+        return {
+            cancel : function(){
+                clearInterval(timer);
+            }
+        };
+    }
+    count(1, 10);
+
+
+
+
+</script>
+</html>

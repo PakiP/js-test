@@ -1,0 +1,17 @@
+.flex-container {
+/*    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;*/
+    width: 400px;
+    height: 250px;
+    background-color: lightgrey;
+    margin: 0 auto;
+}
+
+.flex-item {
+    background-color: cornflowerblue;
+/*    width: 100px;
+    height: 100px;
+    margin: 10px;*/
+}
