@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="test-jsonp"></div>
+    <div id="myDiv"><h2>1</h2></div>
+    <button type="button" onclick="loadXMLDoc()">拉钩测试</button>
+    <script type="text/javascript">
+        function refreshPrice(data) {
+            var p = document.getElementById('test-jsonp');
+            p.innerHTML = '当前价格：' +
+                data['0000001'].name +': ' +
+                data['0000001'].price + '；' +
+                data['1399001'].name + ': ' +
+                data['1399001'].price;
+        }
+        function getPrice() {
+            var
+                js = document.createElement('script'),
+                head = document.getElementsByTagName('head')[0];
+            js.src = 'http://api.money.126.net/data/feed/0000001,1399001?callback=refreshPrice';
+            head.appendChild(js);
+        }
+
+        // getPrice();
+        function loadXMLDoc()
+        {
+            var xmlhttp;
+            if (window.XMLHttpRequest)
+            {
+                //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                xmlhttp=new XMLHttpRequest();
+            }
+            else
+            {
+                // IE6, IE5 浏览器执行代码
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange=function()
+            {
+                if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                {
+                    console.log(xmlhttp.responseText)
+                }
+            }
+            xmlhttp.open("POST","https://www.lagou.com/jobs/positionAjax.json?city=%E6%9D%AD%E5%B7%9E&needAddtionalResult=false",true);
+            xmlhttp.send();
+        }
+    </script>
+</body>
+</html>
