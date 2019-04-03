@@ -72,13 +72,17 @@ function reducer(state, action) {
     case 'INCREMENT':
       return {
         ...state,
-        count: state.counter.count + 1
+        counter: {
+          count: state.counter.count + 1
+        }
       };
       // break;
     case 'DECREMENT':
       return {
         ...state,
-        count: state.counter.count - 1
+        counter: {
+          count: state.counter.count - 1
+        }
       }
       // break;
     default:
