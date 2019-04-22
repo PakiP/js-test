@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>防抖</title>
+    <!-- <link rel="stylesheet" href="./css/test.css"> -->
+</head>
+<body>
+    <h1>防抖</h1>
+    <div id="btn">click me</div>
+</body>
+<!-- <script src="js/test.js" type="text/javascript"></script> -->
+<script>
+var debounce = function(fn, delayTime) {
+    var timeId;
+    return function () {
+        var self = this;
+        var args = arguments;
+        console.log(self)
+        console.log(args)
+        timeId && clearTimeout(timeId);
+        timeId = setTimeout(function() {
+            fn.apply(self, args);
+        }, delayTime)
+    }
+}
+
+var el = document.body.querySelector('#btn')
+var testClick = debounce(function() {
+    console.log('!!!');
+}, 200);
+el.addEventListener('click', testClick)
+
+</script>
+</html>
