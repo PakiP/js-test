@@ -1,32 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>题目1</title>
 </head>
 <body>
-
+  <form>
+    <input type="text" placeholder="预算上限" name="maxPrice" id="maxPrice">
+    <br>
+    <input type="text" placeholder="每种物品价格" name="goodsPrice" id="goodsPrice">
+    <br>
+    <input type="button" value="提交" id="submitBtn">
+  </form>
+  <p>结果: </p>
+  <p id="result"></p>
 </body>
 <script>
-    function count(start, end) {
-        //立即输出第一个值
-        console.log(start++);
-        var timer = setInterval(function(){
-            if(start <= end){
-                console.log(start++);
-            }
-        },100);
-        //返回一个对象
-        return {
-            cancel : function(){
-                clearInterval(timer);
-            }
-        };
+window.onload = function () {
+  var $submitBtn = document.getElementById('submitBtn');
+  var $result = document.getElementById('result');
+  $submitBtn.addEventListener('click', function() {
+    var maxPrice = document.getElementById('maxPrice').value;
+    var goodsPrice = document.getElementById('goodsPrice').value;
+    var priceArr = goodsPrice.split(' ').map(Number);
+    $result.innerHTML = maxCategroy(maxPrice, priceArr);
+  })
+  function maxCategroy(maxPrice, priceArr) {
+    var result = 0;
+    priceArr.sort((a,b) => a-b);
+    for (var i = 0; i < priceArr.length; i++) {
+      var price = priceArr[i];
+      result += price;
+      if (result > maxPrice) {
+        result -= price;
+      }
     }
-    count(1, 10);
-
-
-
-
+    return result;
+  }
+}
 </script>
 </html>

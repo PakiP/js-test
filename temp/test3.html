@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>题目2</title>
+  <style type="text/css">
+    #container table{
+      border: 1px #999 solid;
+      border-collapse: collapse;
+    }
+    #container table tr td{
+      width: 20px;
+      height: 20px;
+      background-color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <input type="text" placeholder="n*n格子" name="number" id="number">
+    <input type="button" value="提交" id="submitBtn">
+  </form>
+  <br>
+  <div id="container">
+  </div>
+</body>
+<script>
+window.onload = function () {
+  var $submitBtn = document.getElementById('submitBtn');
+  var $container = document.getElementById('container');
+  $submitBtn.addEventListener('click', function() {
+    var number = document.getElementById('number').value;
+    var tab = '';
+    for (var i = 0; i < number; i++) {
+      tab += '<tr>';
+      for (var j = 0; j < number; j++) {
+        tab += '<td></td>'
+      }
+      tab += '</tr>';
+    }
+    $container.innerHTML = '<table border="1">' + tab + '</table>'
+  })
+  $container.addEventListener('click', function (e) {
+    var curr = e.target;
+    if (curr.nodeName === 'TD') {
+      if (curr.style.backgroundColor === 'blue') {
+        curr.style.backgroundColor = 'white'
+      } else {
+        curr.style.backgroundColor = 'blue';
+      }
+    }
+  })
+  $container.addEventListener('mouseover', function (e) {
+    var curr = e.target;
+    if (curr.nodeName === 'TD' && curr.style.backgroundColor !== 'blue') {
+      curr.style.backgroundColor = 'red';
+    }
+  })
+  $container.addEventListener('mouseout', function (e) {
+    var curr = e.target;
+    if (curr.nodeName === 'TD' && curr.style.backgroundColor !== 'blue') {
+      curr.style.backgroundColor = 'white';
+    }
+  })
+}
+</script>
+</html>
