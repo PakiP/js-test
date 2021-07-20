@@ -3,7 +3,7 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-// todo
+
 const lines = [];
 
 function mostGoodsWithinLimit(limitMoney, goodsPrice) {
